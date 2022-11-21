@@ -15,7 +15,11 @@ Workshop for the NHS R Conference Workshops, by [Jumping Rivers](https://jumping
 
 ## Cloud Computing :cloud:
 
-You should have access to a [space on Posit Cloud](https://posit.cloud/spaces/293797/content/)
+You should have access to a [space on Posit Cloud](https://posit.cloud/spaces/293797/content/).
+
+You should have recieved joining instructions from NHS R Conference. 
+
+There is nothing else to set up in advance of the session.
 
 
 ## Materials :books:
