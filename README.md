@@ -22,7 +22,7 @@ You should have access to a [space on Posit Cloud](https://posit.cloud/spaces/29
 
 * [Introduction](https://jumpingrivers.github.io/2022-nhs-r-quarto/slides/introduction.html)
 
-* [Part 1](https://jumpingrivers.github.io/2022-nhs-r-quarto/slides/part1.html)
+* [Part 1](https://jumpingrivers.github.io/2022-nhs-r-quarto/slides/part1.html) (Coming soon)
 
-* [Part 2](https://jumpingrivers.github.io/2022-nhs-r-quarto/slides/part1.html)
+* [Part 2](https://jumpingrivers.github.io/2022-nhs-r-quarto/slides/part1.html) (Coming soon)
 
