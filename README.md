@@ -30,3 +30,6 @@ There is nothing else to set up in advance of the session.
 
 * [Part 2](https://jumpingrivers.github.io/2022-nhs-r-quarto/slides/part1.html) (Coming soon)
 
+## Questions?
+
+:email: rhian@jumpingrivers.com
