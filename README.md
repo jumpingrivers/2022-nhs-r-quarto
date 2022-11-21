@@ -1,2 +1,30 @@
-# 2022-nhs-r-quarto
-Materials for the Reproducible data reports with Quarto Workshop at NHS R Conference 2022
+# Reproducible data reports with Quarto
+
+Workshop for the NHS R Conference Workshops, by [Jumping Rivers](https://jumpingrivers.com)
+
+## Timings :clock2:
+
+**14:00 - 15:00** Part 1
+
+**15:00 - 15:15** 15 minute break
+
+**15:15 - 16:15** Part 2
+
+**16:15 - 16:30** Q & A
+
+
+## Cloud Computing :cloud:
+
+You should have access to a [space on Posit Cloud](https://posit.cloud/spaces/293797/content/)
+
+
+## Materials :books:
+
+All slides are available to view in the `docs/` folder. Alternatively, find them at the following links:
+
+* [Introduction](https://jumpingrivers.github.io/2022-nhs-r-quarto/slides/introduction.html)
+
+* [Part 1](https://jumpingrivers.github.io/2022-nhs-r-quarto/slides/part1.html)
+
+* [Part 2](https://jumpingrivers.github.io/2022-nhs-r-quarto/slides/part1.html)
+
