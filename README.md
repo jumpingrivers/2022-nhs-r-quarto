@@ -22,4 +22,4 @@ You should have access to a [space on Posit Cloud](https://posit.cloud/spaces/29
 
 ## Questions?
 
-* :email: [](mailto:rhian@jumpingrivers.com)
+* :email: [rhian@jumpingrivers.com](mailto:rhian@jumpingrivers.com)
