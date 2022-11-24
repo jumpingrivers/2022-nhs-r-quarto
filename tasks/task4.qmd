@@ -1,0 +1,74 @@
+---
+title: "A report on `r params$species` penguins"
+format: html
+params:
+  species: "Adelie"
+---
+
+## Background
+
+The `r params$species` penguin 🐧 is a species of [penguin](https://en.wikipedia.org/wiki/Penguin) common along the entire coast of the [Antarctic](https://en.wikipedia.org/wiki/Antarctic) continent, which is the only place where it is found.
+
+A data set containing information on `r params$species` penguins can be found [here](https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-07-28/penguins.csv).
+
+[![By Andrew Shiva/Wikipedia, CC BY-SA 4.0](adelie.jpg){fig-alt="A small penguin on a rock." width="289"}](https://commons.wikimedia.org/w/index.php?curid=46714803)
+
+## Analysis
+
+```{r}
+#| echo: false
+#| warning: false
+library("dplyr")
+library("ggplot2")
+library("readr")
+library("tidyr")
+```
+
+```{r load_data}
+#| message: false
+penguins = read_csv(
+  "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-07-28/penguins.csv"
+)
+```
+
+```{r calc_largest_bill}
+max_bill_length = penguins %>% 
+  filter(species == params$species) %>% 
+  slice_max(bill_length_mm, n = 1) %>% 
+  pull(bill_length_mm)
+```
+
+The largest recorded bill length of the `r params$species` penguin was `r max_bill_length`mm.
+
+Here is a summary table of mean body mass (in grams) for `r params$species` penguins.
+
+```{r wrangle_table}
+#| message: false
+table = 
+penguins %>%
+  filter(species == params$species) %>% 
+  filter(!is.na(sex)) %>%
+  group_by(sex, island) %>%
+  summarise(avg_body_mass_g = round(mean(body_mass_g)))
+```
+
+```{r print_table}
+#| echo: false
+table
+```
+
+This plot shows the distribution of bill length vs flipper length for the `r params$species` penguin.
+
+```{r}
+#| echo: false
+#| warning: false
+penguins %>%
+  filter(species == params$species) %>%
+  ggplot(aes(x = bill_length_mm, 
+             y = flipper_length_mm,
+             colour = species)) + 
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  facet_wrap(~year) + 
+  theme_minimal() 
+```

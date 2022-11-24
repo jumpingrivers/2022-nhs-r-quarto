@@ -1,0 +1,429 @@
+---
+title: "Reproducible data reports with Quarto"
+subtitle: "NHS R Conference 2022"
+author: "Rhian Davies @StatsRhian"
+format:
+  revealjs:
+    theme: [default, custom.scss]
+    logo: graphics/logo.svg
+    code-link: true
+    css: custom.scss
+    self-contained: true
+    preview-links: true
+---
+
+## Welcome
+
+-   **Workspace**: [posit.cloud/spaces/293797](https://posit.cloud/spaces/293797/content/)
+-   **Slides**: [github.com/jumpingrivers/2022-nhs-r-quarto](https://github.com/jumpingrivers/2022-nhs-r-quarto)
+
+# Hello 👋
+
+A bit about me
+
+# Jumping Rivers?
+
+Data Science Consultancy and Training
+
+# What we do
+
+-   All things data science
+
+-   Training
+
+-   Machine learning, DevOps, infrastructure
+
+-   Managed Posit services
+
+-   Dashboard development and deployment
+
+📨 hello[\@jumpingrivers.com](mailto:info@jumpingrivers.com)
+
+## Timings 🕑
+
+-   **14:00 - 15:00** Part 1
+
+-   **15:00 - 15:15** 15 minute break
+
+-   **15:15 - 16:15** Part 2
+
+-   **16:15 - 16:30** Q & A
+
+# Ask questions throughout 🙋
+
+# What is Quarto?
+
+## Quarto?
+
+-   Open-source scientific and technical publishing system
+
+-   Write documents that combine code with text
+
+-   Created by [Posit](https://posit.co/)
+
+-   Similar to R Markdown, but without a dependency on R
+
+-   Multiple language and multiple output formats
+
+-   File extension `.qmd`
+
+## Gallery
+
+Let's look at some [examples](https://quarto.org/docs/gallery/)
+
+## What about R Markdown?
+
+-   R Markdown isn't going anywhere
+
+-   Quarto has great [documentation](https://quarto.org/docs/get-started/)
+
+-   Quarto is independent from R
+
+-   Quarto is very user friendly
+
+-   Can still render most R Markdown files without modification
+
+# Your first Quarto document
+
+## Creating a new Quarto document
+
+-   File \> New File \> Quarto Document
+
+-   Set title and author
+
+-   Click **Create**
+
+-   Save and click **Render**
+
+## It's not an R package but...
+
+```{r}
+#| eval: false
+#| echo: true
+library("quarto")
+quarto_render("document.qmd")
+```
+
+## YAML header
+
+``` yaml
+---
+title: "A very cool title"
+format: html
+---
+```
+
+::: callout-note
+YAML: Yet Another Markup Language
+:::
+
+## Task 1: Your first Quarto document
+
+1.  File \> New File \> Quarto Document
+
+2.  Click **Create Empty Document**
+
+3.  Add some YAML declaring a title, author and HTML format
+
+4.  Add a sentence
+
+5.  Tick `Render on Save`
+
+6.  Save your document and click `Render`
+
+``` yaml
+---
+title: "My first Quarto report"
+author: "Rhian Davies"
+format: html
+---
+```
+
+```{r}
+countdown::countdown(minutes = 5,
+                     color_border = "#5b868d",
+                     color_text = "#5b868d",
+                     color_running_text = "white",
+                     color_running_background = "#5b868d",
+                     color_finished_text = "#5b868d",
+                     color_finished_background = "white",
+                     margin = "0.9em",
+                     font_size = "2em")
+```
+
+# Adding content
+
+## Including content
+
+-   Text
+-   Links
+-   Images
+-   Code text
+-   Embedded tables and plots
+-   Equations
+-   References
+
+[Documentation](https://quarto.org/docs/authoring/markdown-basics.html)
+
+## Including images
+
+::: columns
+::: {.column width="70%"}
+-   Lots of ways to add images to a Quarto document
+
+-   Easiest is to use the Visual editor
+
+-   Click **Insert --\> Figure/Image**
+:::
+
+::: {.column width="30%"}
+[![By Andrew Shiva/Wikipedia, CC BY-SA 4.0](graphics/adelie.jpg){fig-alt="A small penguin on a rock"}](https://commons.wikimedia.org/w/index.php?curid=46714803)
+:::
+:::
+
+## Task 2: Adelie Penguins 🐧
+
+1.  Go to [wikipedia.org/wiki/Adelie_penguin](https://en.wikipedia.org/wiki/Ad%C3%A9lie_penguin)
+
+2.  Copy the first sentence into a Quarto document.
+
+3.  Match the formatting (italics, bold, links)
+
+4.  Add an image of the Adelie Penguin (there's one in the tasks folder)
+
+5.  Using the visual editor, can you add alt text to your image?
+
+```{r}
+countdown::countdown(minutes = 10,
+                     color_border = "#5b868d",
+                     color_text = "#5b868d",
+                     color_running_text = "white",
+                     color_running_background = "#5b868d",
+                     color_finished_text = "#5b868d",
+                     color_finished_background = "white",
+                     margin = "0.9em",
+                     font_size = "2em")
+```
+
+# Including code
+
+## Code blocks
+
+-   Anything you can do in code, you can add to your document.
+
+-   For example we could load data
+
+```{r}
+#| echo: fenced
+penguins = readr::read_csv(
+  "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-07-28/penguins.csv"
+
+)
+```
+
+-   Can have as many code blocks as you like
+
+-   `Ctrl + Alt + I` in the RStudio IDE
+
+## Order matters
+
+-   Code blocks are executed in order
+
+```{r}
+#| error: true
+#| echo: true
+x
+```
+
+```{r}
+#| echo: true
+x = 5
+```
+
+## Your environment matters
+
+Remember to load any libraries you might need.
+
+```{r}
+#| echo: true
+#| error: true
+penguins %>%
+  group_by(species) %>%
+  summarise(avg_bill = mean(bill_depth_mm))
+```
+
+## Code block options
+
+Included in a special comment `#|` at the top of the block
+
+::: {style="font-size: 0.8em;"}
+| Option    | Purpose                                                    | Default value |
+|------------------|-----------------------------------|------------------|
+| `echo`    | Show/hide code blocks in the output                        | `true`        |
+| `eval`    | Whether to evaluate code within the block                  | `true`        |
+| `warning` | Show/hide messages/warnings produced by code in the output | `true`        |
+:::
+
+[More info](https://quarto.org/docs/computations/execution-options.html)
+
+## Code collapsing
+
+``` yaml
+#| echo: fenced
+#| code-fold: true
+```
+
+```{r}
+#| echo: fenced
+#| warning: false
+#| code-fold: true
+library("dplyr")
+library("tidyr")
+library("stringr")
+library("ggplot2")
+```
+
+## Global code block options
+
+``` yaml
+---
+title: "Global code block options"
+execute:
+echo: false
+---
+```
+
+## Inline code
+
+```{r}
+#| echo: fenced
+avg_bill = 
+  penguins %>%
+  filter(species == "Adelie") %>%
+  pull(bill_length_mm) %>%
+  mean(na.rm = TRUE) %>%
+  round()
+```
+
+The average bill length of the Adelie penguin is `r avg_bill`mm.
+
+## Task 3: Running some code 🐧
+
+::: {style="font-size: 0.8em;"}
+1.  Open the document `task3.qmd`
+
+2.  Try to render it. Why does it not work?
+
+3.  Directly under the analysis subheading, add a code block to load the {dplyr}, {readr} and {tidyr} packages
+
+4.  Hide the code block and stop the packages messages from displaying
+
+5.  Use in-line code to add a sentence about the largest recorded bill length of an Adelie penguin.
+:::
+
+```{r}
+#| echo: true
+library("dplyr")
+library("readr")
+library("tidyr")
+```
+
+```{r}
+countdown::countdown(minutes = 10,
+                     color_border = "#5b868d",
+                     color_text = "#5b868d",
+                     color_running_text = "white",
+                     color_running_background = "#5b868d",
+                     color_finished_text = "#5b868d",
+                     color_finished_background = "white",
+                     margin = "0.9em",
+                     font_size = "2em",
+                     top = 0)
+```
+
+# Graphs, Tables and params
+
+## Graphs
+
+```{r}
+#| echo: fenced
+#| fig-cap: "Flipper vs bill length for three years."
+#| fig-width: 8
+#| output-location: slide 
+ggplot(penguins, aes(x = bill_length_mm, 
+                     y = flipper_length_mm,
+                     colour = species)) + 
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  facet_wrap(~year) + 
+  theme_minimal() 
+```
+
+## Tables
+
+Many table packages in R. Notable ones:
+
+-   `knitr::kable()`
+-   {reactable}
+-   {gt}
+-   {flextable}
+-   {DT}
+
+## Parameterised reports
+
+Allow you to define parameters in YAML
+
+``` yaml
+---
+title: "A report on penguins"
+format: html
+params:
+    species: Adelie
+---
+```
+
+And use them in your code chunks
+
+```{r}
+#| eval: false
+#| echo: fenced
+penguins %>%
+  filter(species = params$species)
+```
+
+## Task 4: Tables and graphs 🐧
+
+::: {style="font-size: 0.9em;"}
+1.  Open the document `task4.qmd`
+
+2.  Change the displayed `table` to be a reactable table with `reactable::reactable()`
+
+3.  Add a caption to the plot with the `fig-cap:` code block option
+
+4.  Change the `species:` param in the YAML from "Adelie" to "Gentoo"
+:::
+
+```{r}
+countdown::countdown(minutes = 10,
+                     color_border = "#5b868d",
+                     color_text = "#5b868d",
+                     color_running_text = "white",
+                     color_running_background = "#5b868d",
+                     color_finished_text = "#5b868d",
+                     color_finished_background = "white",
+                     margin = "0.9em",
+                     font_size = "2em",
+                     top = 0)
+```
+
+# Wrap up 🏁
+
+## Links & Resources
+
+-   Quarto docs: [quarto.org](https://quarto.org/)
+
+-   Thomas Mock webinar: [jthomasmock.github.io/quarto-2hr-webinar](https://jthomasmock.github.io/quarto-2hr-webinar/)
+
+-   Learn with us at [jumpingrivers.com/training/](https://www.jumpingrivers.com/training/all-courses/)
+
+-   These materials at [jumpingrivers.github.io/2022-nhs-r-quarto](https://jumpingrivers.github.io/2022-nhs-r-quarto/)

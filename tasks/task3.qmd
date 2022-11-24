@@ -1,0 +1,28 @@
+---
+title: "A report on Adelie penguins"
+format: html
+---
+
+## Background
+
+The **Adélie penguin (*Pygoscelis adeliae*)** 🐧 is a species of [penguin](https://en.wikipedia.org/wiki/Penguin) common along the entire coast of the [Antarctic](https://en.wikipedia.org/wiki/Antarctic) continent, which is the only place where it is found.
+
+A data set containing information on Adelie penguins can be found [here](https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-07-28/penguins.csv).
+
+[![By Andrew Shiva/Wikipedia, CC BY-SA 4.0](adelie.jpg){fig-alt="A small penguin on a rock." width="289"}](https://commons.wikimedia.org/w/index.php?curid=46714803)
+
+## Analysis
+
+```{r load_data}
+#| message: false
+penguins = read_csv(
+  "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-07-28/penguins.csv"
+)
+```
+
+```{r calc_largest_bill}
+max_bill_length = penguins %>% 
+  filter(species == "Adelie") %>% 
+  slice_max(bill_length_mm, n = 1) %>% 
+  pull(bill_length_mm)
+```

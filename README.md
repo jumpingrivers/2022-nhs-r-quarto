@@ -12,19 +12,10 @@ Workshop for the NHS R Conference Workshops, by [Jumping Rivers](https://jumping
 
 **16:15 - 16:30** Q & A
 
-
 ## Cloud Computing :cloud:
 
 You should have access to a [space on Posit Cloud](https://posit.cloud/spaces/293797/content/)
 
-
 ## Materials :books:
 
-All slides are available to view in the `docs/` folder. Alternatively, find them at the following links:
-
-* [Introduction](https://jumpingrivers.github.io/2022-nhs-r-quarto/slides/introduction.html)
-
-* [Part 1](https://jumpingrivers.github.io/2022-nhs-r-quarto/slides/part1.html)
-
-* [Part 2](https://jumpingrivers.github.io/2022-nhs-r-quarto/slides/part1.html)
-
+* [Slides](https://jumpingrivers.github.io/2022-nhs-r-quarto/slides.html)
