@@ -19,3 +19,7 @@ You should have access to a [space on Posit Cloud](https://posit.cloud/spaces/29
 ## Materials :books:
 
 * [Slides](https://jumpingrivers.github.io/2022-nhs-r-quarto/slides.html)
+
+## Questions?
+
+* :email: [](mailto:rhian@jumpingrivers.com)
